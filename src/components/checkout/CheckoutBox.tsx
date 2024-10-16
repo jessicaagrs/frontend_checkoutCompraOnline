@@ -1,13 +1,14 @@
 import { TypeCheckout } from "../../enums/enum";
 import useCheckoutBuy from "../../hooks/useCheckoutBuy";
 import ProductsContainer from "./ProductsContainer";
+import TransactionValues from "./TransactionValues";
 
 export default function CheckoutBox() {
     const { typeCheckout } = useCheckoutBuy();
 
     return (
-        <div className="md:w-2/4 w-full">
-            <div className="flex justify-center items-center gap-5 border-b border-custom-300 pt-2">
+        <div className="md:w-2/4 w-full flex flex-col">
+            <section className="flex justify-center items-center gap-5 border-b border-custom-300 pt-2">
                 <button
                     className={`${
                         typeCheckout === TypeCheckout.BAG
@@ -38,8 +39,9 @@ export default function CheckoutBox() {
                 >
                     Confirmação
                 </button>
-            </div>
+            </section>
             <ProductsContainer />
+            <TransactionValues />
         </div>
     );
 }

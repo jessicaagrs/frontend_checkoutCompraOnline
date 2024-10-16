@@ -14,7 +14,7 @@ function App() {
 
     return (
         <CheckoutContextProvider>
-            <main className="w-full h-screen flex">
+            <main className="w-full min-h-screen flex">
                 <InformationBox />
                 <CheckoutBox />
             </main>

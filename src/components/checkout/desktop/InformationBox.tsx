@@ -5,7 +5,7 @@ export const InformationBox = () => {
     const { totalItems } = useCheckoutBuy();
 
     return (
-        <div className="hidden md:flex md:w-2/4 md:flex-col md:justify-between md:items-center md:p-8 md:bg-custom-200">
+        <div className="hidden md:flex md:w-2/4 md:flex-col md:justify-around md:items-center md:p-8 md:bg-custom-200">
             <div className="flex items-center gap-10">
                 <img
                     src="/cosmetics.svg"

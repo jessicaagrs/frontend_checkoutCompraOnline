@@ -13,8 +13,8 @@ export default function ProductsContainer() {
     }, []);
 
     return (
-        <div className="bg-custom-500 py-5 px-3">
-            <div className="bg-white flex flex-col gap-14">
+        <section className="bg-custom-500 py-5 px-3">
+            <div className="bg-white flex flex-col gap-8">
                 {data?.map(item => (
                     <ProductItem
                         product={item}
@@ -22,6 +22,6 @@ export default function ProductsContainer() {
                     />
                 ))}
             </div>
-        </div>
+        </section>
     );
 }
