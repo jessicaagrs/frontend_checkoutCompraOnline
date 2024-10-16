@@ -7,6 +7,8 @@ export default {
                 "custom-200": "#F5F3FF",
                 "custom-300": "#CCCCCC",
                 "custom-400": "#878787",
+                "custom-500": "#F5F5F5",
+                "custom-600": "#9B9B9B",
             },
         },
     },

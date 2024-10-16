@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import CheckoutBox from "./components/checkout/CheckoutBox";
 import { InformationBox } from "./components/checkout/desktop/InformationBox";
 import { CheckoutContextProvider } from "./contexts/checkoutContext";
-import useLocalStorage from "./hooks/useLocalStorage";
 import PRODUCTS from "./data/products";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
     const { setLocalStorage } = useLocalStorage();

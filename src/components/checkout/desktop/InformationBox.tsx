@@ -1,6 +1,9 @@
 import { ShieldCheck } from "lucide-react";
+import useCheckoutBuy from "../../../hooks/useCheckoutBuy";
 
 export const InformationBox = () => {
+    const { totalItems } = useCheckoutBuy();
+
     return (
         <div className="hidden md:flex md:w-2/4 md:flex-col md:justify-between md:items-center md:p-8 md:bg-custom-200">
             <div className="flex items-center gap-10">
@@ -24,7 +27,7 @@ export const InformationBox = () => {
                     height={250}
                 />
                 <p className="font-bold text-lg">Entrega via Transportadora</p>
-                <span className="bg-white p-2 rounded-md">1 item</span>
+                <span className="bg-white p-2 rounded-md">{totalItems} item(s)</span>
             </div>
         </div>
     );

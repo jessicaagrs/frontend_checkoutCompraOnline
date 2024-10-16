@@ -4,4 +4,5 @@ export interface Product {
     url: string;
     price: number;
     pricePrevious: number;
+    quantity: number;
 }
