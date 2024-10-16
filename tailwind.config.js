@@ -5,6 +5,8 @@ export default {
         extend: {
             colors: {
                 "custom-200": "#F5F3FF",
+                "custom-300": "#CCCCCC",
+                "custom-400": "#878787",
             },
         },
     },
