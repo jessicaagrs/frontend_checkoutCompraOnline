@@ -3,17 +3,22 @@ import useCheckoutBuy from "../../hooks/useCheckoutBuy";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { Product } from "../../interfaces/product";
 import { formatCurrency } from "../../utils/formatter";
+import { TypeCheckout } from "../../enums/enum";
 
 const freight = 5.3;
 const discount = 30.0;
 
 export default function TransactionValues() {
     const { getLocalStorage } = useLocalStorage();
-    const { totalItems } = useCheckoutBuy();
+    const { totalItems, setTypeCheckout } = useCheckoutBuy();
     const [totals, setTotals] = useState({
         subtotal: 0,
         total: 0,
     });
+
+    const handlePaymentTab = () => {
+        setTypeCheckout(TypeCheckout.PAYMENT);
+    };
 
     useEffect(() => {
         const result = getLocalStorage() as Product[];
@@ -46,7 +51,12 @@ export default function TransactionValues() {
                 </div>
             </div>
             <div className="md:flex md:justify-center md:flex-1">
-                <button className=" bg-custom-700 text-white w-full md:w-80 h-12">Seguir para o pagamento</button>
+                <button
+                    className=" bg-custom-700 text-white w-full rounded-md md:w-80 h-12"
+                    onClick={handlePaymentTab}
+                >
+                    Seguir para o pagamento
+                </button>
             </div>
         </section>
     );

@@ -13,15 +13,13 @@ export default function ProductsContainer() {
     }, []);
 
     return (
-        <section className="bg-custom-500 py-5 px-3">
-            <div className="bg-white flex flex-col gap-8">
-                {data?.map(item => (
-                    <ProductItem
-                        product={item}
-                        key={item.id}
-                    />
-                ))}
-            </div>
-        </section>
+        <div className="bg-white flex flex-col gap-8">
+            {data?.map(item => (
+                <ProductItem
+                    product={item}
+                    key={item.id}
+                />
+            ))}
+        </div>
     );
 }
