@@ -29,5 +29,11 @@ function maskForInputCodeCvv(value: string) {
     return newValue.slice(0, 3);
 }
 
-export { formatCurrency, maskForInputCard, maskForInputCodeCvv, maskForInputExpirationDate };
+function getLastFourChars(str: string) {
+    if (str.length <= 4) {
+        return str;
+    }
+    return str.slice(-4);
+}
 
+export { formatCurrency, getLastFourChars, maskForInputCard, maskForInputCodeCvv, maskForInputExpirationDate };

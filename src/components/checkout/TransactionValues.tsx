@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
+import { KeysStorage, TypeCheckout } from "../../enums/enum";
 import useCheckoutBuy from "../../hooks/useCheckoutBuy";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { Product } from "../../interfaces/product";
 import { formatCurrency } from "../../utils/formatter";
-import { KeysStorage, TypeCheckout } from "../../enums/enum";
 
 const freight = 5.3;
 const discount = 30.0;
@@ -56,7 +56,9 @@ export default function TransactionValues() {
             </div>
             <div className="md:flex md:justify-center md:flex-1">
                 <button
-                    className=" bg-custom-700 text-white w-full rounded-md md:w-80 h-12"
+                    className={` text-white w-full rounded-md md:w-80 h-12 ${
+                        typeCheckout === TypeCheckout.CONFIRMATION ? "bg-black" : "bg-custom-700"
+                    }`}
                     onClick={handleNextTab}
                 >
                     {typeCheckout === TypeCheckout.BAG

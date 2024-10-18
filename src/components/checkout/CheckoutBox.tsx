@@ -2,6 +2,7 @@ import { TypeCheckout } from "../../enums/enum";
 import useCheckoutBuy from "../../hooks/useCheckoutBuy";
 import CardContainer from "./CardContainer";
 import ProductsContainer from "./ProductsContainer";
+import PurchaseCompletedContainer from "./PurchaseCompletedContainer";
 import { Tabs } from "./Tabs";
 import TransactionValues from "./TransactionValues";
 
@@ -13,6 +14,12 @@ export default function CheckoutBox() {
             <section className="bg-custom-500 py-5 px-3">
                 {typeCheckout === TypeCheckout.BAG && <ProductsContainer />}
                 {typeCheckout === TypeCheckout.PAYMENT && <CardContainer />}
+                {typeCheckout === TypeCheckout.CONFIRMATION && (
+                    <>
+                        <PurchaseCompletedContainer />
+                        <ProductsContainer />
+                    </>
+                )}
             </section>
             <TransactionValues />
         </div>

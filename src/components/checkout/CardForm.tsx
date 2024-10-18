@@ -3,7 +3,12 @@ import { KeysStorage, TypeCheckout } from "../../enums/enum";
 import useCheckoutBuy from "../../hooks/useCheckoutBuy";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { Buy } from "../../interfaces/buy";
-import { maskForInputCard, maskForInputCodeCvv, maskForInputExpirationDate } from "../../utils/formatter";
+import {
+    getLastFourChars,
+    maskForInputCard,
+    maskForInputCodeCvv,
+    maskForInputExpirationDate,
+} from "../../utils/formatter";
 
 export const CardForm = () => {
     const [cardNumber, setCardNumber] = useState("");
@@ -60,7 +65,7 @@ export const CardForm = () => {
         }
 
         const buy: Buy = {
-            cardNumber,
+            cardNumber: getLastFourChars(cardNumber),
             nameHolder,
             expirationDate,
         };
@@ -82,7 +87,6 @@ export const CardForm = () => {
     };
 
     useEffect(() => {
-        console.log(validate);
         if (validate) handleValidateForm();
     }, [validate]);
 
