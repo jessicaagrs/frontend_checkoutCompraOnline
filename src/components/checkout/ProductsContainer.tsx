@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { Product } from "../../interfaces/product";
 import { ProductItem } from "./ProductItem";
+import { KeysStorage } from "../../enums/enum";
 
 export default function ProductsContainer() {
     const { getLocalStorage } = useLocalStorage();
     const [data, setData] = useState<Product[] | null>(null);
 
     useEffect(() => {
-        const result = getLocalStorage();
+        const result = getLocalStorage(KeysStorage.PRODUCTS) as Product[];
         setData(result);
     }, []);
 

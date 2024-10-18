@@ -1,11 +1,13 @@
+import { KeysStorage } from "../enums/enum";
+
 export default function useLocalStorage() {
-    const getLocalStorage = () => {
-        const data = localStorage.getItem("checkout");
+    const getLocalStorage = (key : KeysStorage) => {
+        const data = localStorage.getItem(key);
         return data ? JSON.parse(data) : null;
     };
 
-    const setLocalStorage = (data: any) => {
-        localStorage.setItem("checkout", JSON.stringify(data));
+    const setLocalStorage = (data: any, key : KeysStorage) => {
+        localStorage.setItem(key, JSON.stringify(data));
     };
 
     return { getLocalStorage, setLocalStorage };

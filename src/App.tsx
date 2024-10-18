@@ -4,12 +4,13 @@ import { InformationBox } from "./components/checkout/desktop/InformationBox";
 import { CheckoutContextProvider } from "./contexts/checkoutContext";
 import PRODUCTS from "./data/products";
 import useLocalStorage from "./hooks/useLocalStorage";
+import { KeysStorage } from "./enums/enum";
 
 function App() {
     const { setLocalStorage } = useLocalStorage();
 
     useEffect(() => {
-        setLocalStorage(PRODUCTS);
+        setLocalStorage(PRODUCTS, KeysStorage.PRODUCTS);
     }, []);
 
     return (
