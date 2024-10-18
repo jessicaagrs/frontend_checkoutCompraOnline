@@ -3,3 +3,8 @@ export enum TypeCheckout {
     PAYMENT = 'PAGAMENTO',
     CONFIRMATION = 'CONFIRMACAO'
 }
+
+export enum KeysStorage {
+    BUY = 'buy',
+    PRODUCTS = 'products'
+}

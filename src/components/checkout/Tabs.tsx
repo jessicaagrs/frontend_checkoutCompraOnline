@@ -2,7 +2,12 @@ import { TypeCheckout } from "../../enums/enum";
 import useCheckoutBuy from "../../hooks/useCheckoutBuy";
 
 export const Tabs = () => {
-    const { typeCheckout, setTypeCheckout } = useCheckoutBuy();
+    const { typeCheckout, setTypeCheckout, setValidate } = useCheckoutBuy();
+
+    const handleClickTabBag = () => {
+        setTypeCheckout(TypeCheckout.BAG);
+        setValidate(false);
+    };
 
     return (
         <section className="flex justify-center items-center gap-5 border-b border-custom-300 pt-2">
@@ -13,7 +18,7 @@ export const Tabs = () => {
                         : "text-custom-400 relative after:content-[''] after:block after:w-16 after:h-1 after:bg-white  after:duration-500 after:ease-in-out"
                 }`}
                 disabled={typeCheckout === TypeCheckout.CONFIRMATION}
-                onClick={() => setTypeCheckout(TypeCheckout.BAG)}
+                onClick={handleClickTabBag}
             >
                 Sacola
             </button>

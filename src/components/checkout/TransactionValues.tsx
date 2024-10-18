@@ -3,25 +3,29 @@ import useCheckoutBuy from "../../hooks/useCheckoutBuy";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { Product } from "../../interfaces/product";
 import { formatCurrency } from "../../utils/formatter";
-import { TypeCheckout } from "../../enums/enum";
+import { KeysStorage, TypeCheckout } from "../../enums/enum";
 
 const freight = 5.3;
 const discount = 30.0;
 
 export default function TransactionValues() {
     const { getLocalStorage } = useLocalStorage();
-    const { totalItems, setTypeCheckout, typeCheckout } = useCheckoutBuy();
+    const { totalItems, setTypeCheckout, typeCheckout, setValidate } = useCheckoutBuy();
     const [totals, setTotals] = useState({
         subtotal: 0,
         total: 0,
     });
 
-    const handlePaymentTab = () => {
-        setTypeCheckout(TypeCheckout.PAYMENT);
+    const handleNextTab = () => {
+        if (typeCheckout === TypeCheckout.BAG) {
+            setTypeCheckout(TypeCheckout.PAYMENT);
+        } else if (typeCheckout === TypeCheckout.PAYMENT) {
+            setValidate(true);
+        }
     };
 
     useEffect(() => {
-        const result = getLocalStorage() as Product[];
+        const result = getLocalStorage(KeysStorage.PRODUCTS) as Product[];
         const subTotal = result.reduce((acc, item) => acc + item.price * item.quantity, 0);
         const total = subTotal + freight - discount;
         setTotals({
@@ -53,7 +57,7 @@ export default function TransactionValues() {
             <div className="md:flex md:justify-center md:flex-1">
                 <button
                     className=" bg-custom-700 text-white w-full rounded-md md:w-80 h-12"
-                    onClick={handlePaymentTab}
+                    onClick={handleNextTab}
                 >
                     {typeCheckout === TypeCheckout.BAG
                         ? "Seguir para o pagamento"

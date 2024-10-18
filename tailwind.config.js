@@ -10,6 +10,7 @@ export default {
                 "custom-500": "#F5F5F5",
                 "custom-600": "#9B9B9B",
                 "custom-700": "#9222DC",
+                "custom-800": "#DE1616",
             },
         },
     },
