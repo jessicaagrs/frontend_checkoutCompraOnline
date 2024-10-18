@@ -9,7 +9,7 @@ const freight = 5.3;
 const discount = 30.0;
 
 export default function TransactionValues() {
-    const { getLocalStorage } = useLocalStorage();
+    const { getLocalStorage, clearLocalStorage } = useLocalStorage();
     const { totalItems, setTypeCheckout, typeCheckout, setValidate } = useCheckoutBuy();
     const [totals, setTotals] = useState({
         subtotal: 0,
@@ -21,6 +21,9 @@ export default function TransactionValues() {
             setTypeCheckout(TypeCheckout.PAYMENT);
         } else if (typeCheckout === TypeCheckout.PAYMENT) {
             setValidate(true);
+        } else if (typeCheckout === TypeCheckout.CONFIRMATION) {
+            clearLocalStorage(KeysStorage.BUY);
+            setTypeCheckout(TypeCheckout.BAG);
         }
     };
 
