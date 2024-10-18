@@ -10,7 +10,7 @@ const discount = 30.0;
 
 export default function TransactionValues() {
     const { getLocalStorage } = useLocalStorage();
-    const { totalItems, setTypeCheckout } = useCheckoutBuy();
+    const { totalItems, setTypeCheckout, typeCheckout } = useCheckoutBuy();
     const [totals, setTotals] = useState({
         subtotal: 0,
         total: 0,
@@ -55,7 +55,11 @@ export default function TransactionValues() {
                     className=" bg-custom-700 text-white w-full rounded-md md:w-80 h-12"
                     onClick={handlePaymentTab}
                 >
-                    Seguir para o pagamento
+                    {typeCheckout === TypeCheckout.BAG
+                        ? "Seguir para o pagamento"
+                        : typeCheckout === TypeCheckout.PAYMENT
+                        ? "Finalizar Pedido"
+                        : "Voltar ao início do protótipo"}
                 </button>
             </div>
         </section>
