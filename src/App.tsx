@@ -7,10 +7,11 @@ import useLocalStorage from "./hooks/useLocalStorage";
 import { KeysStorage } from "./enums/enum";
 
 function App() {
-    const { setLocalStorage } = useLocalStorage();
+    const { setLocalStorage, clearLocalStorage } = useLocalStorage();
 
     useEffect(() => {
         setLocalStorage(PRODUCTS, KeysStorage.PRODUCTS);
+        clearLocalStorage(KeysStorage.BUY);
     }, []);
 
     return (
