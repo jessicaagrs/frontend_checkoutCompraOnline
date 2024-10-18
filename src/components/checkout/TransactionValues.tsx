@@ -29,12 +29,14 @@ export default function TransactionValues() {
 
     useEffect(() => {
         const result = getLocalStorage(KeysStorage.PRODUCTS) as Product[];
-        const subTotal = result.reduce((acc, item) => acc + item.price * item.quantity, 0);
-        const total = subTotal + freight - discount;
-        setTotals({
-            subtotal: subTotal,
-            total,
-        });
+        if (result) {
+            const subTotal = result.reduce((acc, item) => acc + item.price * item.quantity, 0);
+            const total = subTotal + freight - discount;
+            setTotals({
+                subtotal: subTotal,
+                total,
+            });
+        }
     }, []);
 
     return (

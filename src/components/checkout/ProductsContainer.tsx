@@ -9,21 +9,31 @@ export default function ProductsContainer() {
     const { getLocalStorage } = useLocalStorage();
     const [data, setData] = useState<Product[] | null>(null);
     const { typeCheckout } = useCheckoutBuy();
+    const [loaded, setLoaded] = useState(true);
 
     useEffect(() => {
         const result = getLocalStorage(KeysStorage.PRODUCTS) as Product[];
-        setData(result);
+        if (result) {
+            setData(result);
+            setLoaded(false);
+        }
     }, []);
 
     return (
         <div className="bg-white flex flex-col gap-8">
-            {typeCheckout === TypeCheckout.CONFIRMATION && <h2 className="p-5 text-lg">Produtos</h2>}
-            {data?.map(item => (
-                <ProductItem
-                    product={item}
-                    key={item.id}
-                />
-            ))}
+            {loaded ? (
+                <p>Aguarde...</p>
+            ) : (
+                <>
+                    {typeCheckout === TypeCheckout.CONFIRMATION && <h2 className="p-5 text-lg">Produtos</h2>}
+                    {data?.map(item => (
+                        <ProductItem
+                            product={item}
+                            key={item.id}
+                        />
+                    ))}
+                </>
+            )}
         </div>
     );
 }

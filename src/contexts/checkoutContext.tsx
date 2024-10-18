@@ -1,15 +1,14 @@
 import { createContext, useEffect, useState } from "react";
-import { TypeCheckout } from "../enums/enum";
 import PRODUCTS from "../data/products";
-import { Buy } from "../interfaces/buy";
+import { TypeCheckout } from "../enums/enum";
 
 export const CheckoutContext = createContext({
     typeCheckout: "",
     totalItems: 0,
     validate: false,
-    setTypeCheckout: (value: TypeCheckout) => {},
-    setTotalItems: (value: number) => {},
-    setValidate: (value: boolean) => {},
+    setTypeCheckout: (_value: TypeCheckout) => {},
+    setTotalItems: (_value: number) => {},
+    setValidate: (_value: boolean) => {},
 });
 
 interface ProviderProps {
@@ -22,10 +21,12 @@ export function CheckoutContextProvider({ children }: ProviderProps) {
     const [validate, setValidate] = useState(false);
 
     useEffect(() => {
-        const totalInitialItems = PRODUCTS.reduce((acc, item) => acc + item.quantity, 0);
-
-        if (totalInitialItems) {
-            setTotalItems(totalInitialItems);
+        if (PRODUCTS) {
+            const totalInitialItems = PRODUCTS?.reduce((acc, item) => acc + item.quantity, 0);
+    
+            if (totalInitialItems) {
+                setTotalItems(totalInitialItems);
+            }
         }
     }, [totalItems]);
 

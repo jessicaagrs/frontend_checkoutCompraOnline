@@ -3,8 +3,8 @@ import CheckoutBox from "./components/checkout/CheckoutBox";
 import { InformationBox } from "./components/checkout/desktop/InformationBox";
 import { CheckoutContextProvider } from "./contexts/checkoutContext";
 import PRODUCTS from "./data/products";
-import useLocalStorage from "./hooks/useLocalStorage";
 import { KeysStorage } from "./enums/enum";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
     const { setLocalStorage, clearLocalStorage } = useLocalStorage();
