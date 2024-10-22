@@ -26,9 +26,8 @@ Status do Projeto: :heavy_check_mark: <!-- > :heavy_check_mark:--> Concluído <!
 
 ## Descrição do projeto :pencil:
 
-<p align="justify">
- Checkout de venda referente desafio [Figma Beleza Na Web](https://www.figma.com/design/VAOqGCWUNg13WE1t05I7xy/TestFront?node-id=15211-254388&node-type=canvas&t=kxMN9QyYpWLTxH0T-0)
-</p>
+<p align="justify">Checkout de venda referente desafio Beleza na Web.</p> 
+<a href="https://www.figma.com/design/VAOqGCWUNg13WE1t05I7xy/TestFront?node-id=15211-254388&node-type=canvas&t=rq6Wi43ItZ1ZiypH-0">Figma</a>
 
 ## Funcionalidades :wrench:
 
