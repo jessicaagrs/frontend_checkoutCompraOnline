@@ -22,21 +22,41 @@ export default function TransactionValues() {
         } else if (typeCheckout === TypeCheckout.PAYMENT) {
             setValidate(true);
         } else if (typeCheckout === TypeCheckout.CONFIRMATION) {
-            clearLocalStorage(KeysStorage.BUY);
             setTypeCheckout(TypeCheckout.BAG);
+            clearLocalStorage(KeysStorage.BUY);
         }
     };
 
-    useEffect(() => {
-        const result = getLocalStorage(KeysStorage.PRODUCTS) as Product[];
-        if (result) {
+    const fetchData = async () => {
+        const MAX_ATTEMPTS = 3;
+
+        const tryFetchData = async (attemptNumber: number): Promise<Product[]> => {
+            if (attemptNumber > MAX_ATTEMPTS) {
+                throw new Error("Erro ao carregar produtos");
+            }
+
+            const result = (await getLocalStorage(KeysStorage.PRODUCTS)) as Product[];
+            if (!result) {
+                return tryFetchData(attemptNumber + 1);
+            }
+            return result;
+        };
+
+        try {
+            const result = await tryFetchData(1);
             const subTotal = result.reduce((acc, item) => acc + item.price * item.quantity, 0);
             const total = subTotal + freight - discount;
             setTotals({
                 subtotal: subTotal,
                 total,
             });
+        } catch (error: any) {
+            alert(error.message);
         }
+    };
+
+    useEffect(() => {
+        fetchData();
     }, []);
 
     return (

@@ -129,7 +129,7 @@ export const CardForm = () => {
                     value={nameHolder}
                     onChange={e => setNameHolder(e.target.value)}
                 />
-                {error.nameHolder && <p className="text-xs text-custom-800">insira um número de cartão válido</p>}
+                {error.nameHolder && <p className="text-xs text-custom-800">insira um nome válido</p>}
             </div>
             <div className="flex gap-5">
                 <div className="flex flex-col gap-2">
@@ -146,7 +146,7 @@ export const CardForm = () => {
                         maxLength={5}
                     />
                     {error.expirationDate && (
-                        <p className="text-xs text-custom-800">insira um número de cartão válido</p>
+                        <p className="text-xs text-custom-800">insira uma data válida</p>
                     )}
                 </div>
                 <div className="flex flex-col gap-2">
@@ -162,7 +162,7 @@ export const CardForm = () => {
                         onChange={handleChangeInputCodeCvv}
                         maxLength={3}
                     />
-                    {error.codeCvv && <p className="text-xs text-custom-800">insira um número de cartão válido</p>}
+                    {error.codeCvv && <p className="text-xs text-custom-800">insira um cvv válido</p>}
                 </div>
             </div>
         </form>

@@ -9,9 +9,19 @@ import useLocalStorage from "./hooks/useLocalStorage";
 function App() {
     const { setLocalStorage, clearLocalStorage } = useLocalStorage();
 
+    const sendData = async () => {
+        try {
+            await setLocalStorage(PRODUCTS, KeysStorage.PRODUCTS);
+        } catch (error: any) {
+            alert(error.message);
+        }
+    };
+
     useEffect(() => {
-        setLocalStorage(PRODUCTS, KeysStorage.PRODUCTS);
-        clearLocalStorage(KeysStorage.BUY);
+        sendData();
+        return () => {
+            clearLocalStorage(KeysStorage.PRODUCTS);
+        };
     }, []);
 
     return (
